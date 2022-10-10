@@ -1,0 +1,19 @@
+{
+  "name": "io.cordova.hellocordova",
+  "displayName": "HelloCordova",
+  "version": "1.0.0",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "main": "index.js",
+  "scripts": {
+    "refresh": "npx cordova emulate",
+    "dev": "npx cordova run android",
+    "build": "npx cordova build android",
+    "add-android": "npx cordova platform add android",
+    "rm-android": "npx cordova platform rm android"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0"
+}
