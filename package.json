@@ -1,19 +1,44 @@
 {
-  "name": "io.cordova.hellocordova",
-  "displayName": "HelloCordova",
+  "name": "fall-readings-app",
+  "private": true,
   "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
-  "main": "index.js",
+  "description": "Fall Readings App",
+  "repository": "",
+  "license": "UNLICENSED",
   "scripts": {
-    "refresh": "npx cordova emulate",
-    "dev": "npx cordova run android",
-    "build": "npx cordova build android",
-    "add-android": "npx cordova platform add android",
-    "rm-android": "npx cordova platform rm android"
+    "start": "npm run dev",
+    "dev": "cross-env NODE_ENV=development vite",
+    "build": "cross-env NODE_ENV=production vite build",
+    "build-cordova": "cross-env TARGET=cordova cross-env NODE_ENV=production vite build && node ./build/build-cordova.js && cd cordova && cordova build",
+    "build-cordova-ios": "cross-env TARGET=cordova cross-env NODE_ENV=production vite build && node ./build/build-cordova.js && cd cordova && cordova build ios",
+    "cordova-ios": "cross-env TARGET=cordova cross-env NODE_ENV=production vite build && node ./build/build-cordova.js && cd cordova && cordova run ios",
+    "build-cordova-android": "cross-env TARGET=cordova cross-env NODE_ENV=production vite build && node ./build/build-cordova.js && cd cordova && cordova build android",
+    "cordova-android": "cross-env TARGET=cordova cross-env NODE_ENV=production vite build && node ./build/build-cordova.js && cd cordova && cordova run android",
+    "postinstall": "cpy --flat ./node_modules/framework7-icons/fonts/*.* ./src/fonts/ && cpy --flat ./node_modules/material-icons/iconfont/*.* ./src/fonts/"
   },
-  "keywords": [
-    "ecosystem:cordova"
+  "browserslist": [
+    "IOS >= 13",
+    "Safari >= 13",
+    "last 5 Chrome versions",
+    "last 5 Firefox versions",
+    "Samsung >= 12"
   ],
-  "author": "Apache Cordova Team",
-  "license": "Apache-2.0"
+  "dependencies": {
+    "dom7": "^4.0.4",
+    "framework7": "^7.0.8",
+    "framework7-icons": "^5.0.5",
+    "material-icons": "^1.12.0",
+    "skeleton-elements": "^4.0.0",
+    "swiper": "^8.4.3"
+  },
+  "devDependencies": {
+    "cpy-cli": "^4.2.0",
+    "cross-env": "^7.0.3",
+    "postcss-preset-env": "^7.8.2",
+    "rollup": "^2.79.1",
+    "rollup-plugin-framework7": "^1.2.1",
+    "sass": "^1.55.0",
+    "vite": "^3.1.7",
+    "vite-plugin-html": "^3.2.0"
+  }
 }
