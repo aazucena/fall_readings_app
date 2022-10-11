@@ -6,17 +6,60 @@
 }
 
 /* Your app custom styles here */
-
+/*Link: https://framework7.io/docs/css-variables */
 :root {
-    --ff-ubuntu: 'Ubuntu', sans-serif;
-    --ff-kanit: 'Kanit', sans-serif;
-    --primary: #E68D61;
-    --secondary: #61BAE6;
-    --black: black;
-    --dark-charcoal: #333333; /* https://www.schemecolor.com/grayscale.php */
-    --granite-gray: #666666; /* https://www.schemecolor.com/grayscale.php */
-    --spanish-gray: #999999; /* https://www.schemecolor.com/grayscale.php */
-    --chinese-silver: #CCCCCC; /* https://www.schemecolor.com/grayscale.php */
-    --light-gray: #EEEEEE; /* https://www.schemecolor.com/grayscale.php */
-    --white: white;
+    --f7-font-family: 'Ubuntu', sans-serif;
+    --f7-font-family-ubuntu: 'Ubuntu', sans-serif;
+    --f7-font-family-kanit: 'Kanit', sans-serif;
+    --f7-theme-color: #E68D61;
+    --f7-theme-color-rgb: 230, 141, 97;
+    --f7-theme-color-shade: #ce7e58;
+    --f7-theme-color-tint: #f9986b;
+    --f7-color-primary: #E68D61;
+    --f7-color-primary-rgb: 230, 141, 97;
+    --f7-color-primary-shade: #ce7e58;
+    --f7-color-primary-tint: #f9986b;
+    --f7-color-secondary: #61BAE6;
+    --f7-color-secondary-rgb: 97, 186, 230;
+    --f7-color-secondary-shade: #58a9ce;
+    --f7-color-secondary-tint: #6bccf9;
+}
+.text-color-primary {
+  --f7-theme-color-text-color: var(--f7-theme-color);
+}
+.bg-color-primary {
+  --f7-theme-color-bg-color: var(--f7-theme-color);
+}
+.border-color-primary {
+  --f7-theme-color-border-color: var(--f7-theme-color);
+}
+.ripple-color-primary,
+.ripple-primary {
+  --f7-theme-color-ripple-color: rgba(var(--f7-theme-color-rgb), 0.3);
+}
+.color-theme-primary,
+.color-primary {
+  --f7-theme-color: #E68D61;
+  --f7-theme-color-rgb: 230, 141, 97;
+  --f7-theme-color-shade: #ce7e58;
+  --f7-theme-color-tint: #f9986b;
+}
+.text-color-secondary {
+  --f7-theme-color-text-color: var(--f7-color-secondary);
+}
+.bg-color-secondary {
+  --f7-theme-color-bg-color: var(--f7-color-secondary);
+}
+.border-color-secondary {
+  --f7-theme-color-border-color: var(--f7-color-secondary);
+}
+.ripple-color-secondary {
+  --f7-theme-color-ripple-color: rgba(var(--f7-color-secondary-rgb), 0.3);
+}
+.color-theme-secondary,
+.color-secondary {
+  --f7-theme-color: #61BAE6;
+  --f7-theme-color-rgb: 97, 186, 230;
+  --f7-theme-color-shade: #58a9ce;
+  --f7-theme-color-tint: #6bccf9;
 }

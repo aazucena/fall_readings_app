@@ -9,8 +9,8 @@
   "bundler": "vite",
   "cssPreProcessor": "scss",
   "theming": {
-    "customColor": false,
-    "color": "#007aff",
+    "customColor": true,
+    "color": "#E68D61",
     "darkTheme": false,
     "iconFonts": true,
     "fillBars": false
