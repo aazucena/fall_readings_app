@@ -15,14 +15,17 @@
     --f7-theme-color-rgb: 230, 141, 97;
     --f7-theme-color-shade: #ce7e58;
     --f7-theme-color-tint: #f9986b;
+    --f7-theme-color-filter: invert(55%) sepia(99%) saturate(262%) hue-rotate(335deg) brightness(94%) contrast(91%);
     --f7-color-primary: #E68D61;
     --f7-color-primary-rgb: 230, 141, 97;
     --f7-color-primary-shade: #ce7e58;
     --f7-color-primary-tint: #f9986b;
+    --f7-color-primary-filter: invert(55%) sepia(99%) saturate(262%) hue-rotate(335deg) brightness(94%) contrast(91%);
     --f7-color-secondary: #61BAE6;
     --f7-color-secondary-rgb: 97, 186, 230;
     --f7-color-secondary-shade: #58a9ce;
     --f7-color-secondary-tint: #6bccf9;
+    --f7-color-secondary-filter: invert(86%) sepia(31%) saturate(5373%) hue-rotate(170deg) brightness(98%) contrast(84%);
 }
 .text-color-primary {
   --f7-theme-color-text-color: var(--f7-theme-color);
@@ -62,4 +65,49 @@
   --f7-theme-color-rgb: 97, 186, 230;
   --f7-theme-color-shade: #58a9ce;
   --f7-theme-color-tint: #6bccf9;
+}
+
+/* custom */
+.icon-main {
+  overflow: visible !important;
+  filter: var(--f7-theme-color-filter) !important;
+  background-image: url(../assets/icon-alt.svg) !important;
+  margin-right: 0.5rem !important;
+  height: auto !important;
+}
+.image-fluid {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.navbar .center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+  position: relative;
+  z-index: 10;
+}
+
+.justify-content-around {
+  justify-content: space-around !important;
+}
+
+.ic-size-1 {
+  font-size: 0.5rem !important;
+}
+.ic-size-2 {
+  font-size: 1rem !important;
+}
+.ic-size-3 {
+  font-size: 1.5rem !important;
+}
+.ic-size-4 {
+  font-size: 2rem !important;
+}
+.ic-size-5 {
+  font-size: 2.5rem !important;
+}
+.ic-size-6 {
+  font-size: 3rem !important;
 }

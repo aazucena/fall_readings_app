@@ -1,41 +1,69 @@
 <template>
   <div class="page" data-name="home">
     <!-- Top Navbar -->
-    <div class="navbar navbar-large">
+    <div class="navbar">
       <div class="navbar-bg"></div>
       <div class="navbar-inner">
         <div class="left">
-          <a href="#" class="link icon-only panel-open" data-panel="left">
-            <i class="icon f7-icons if-not-md">menu</i>
-            <i class="icon material-icons if-md">menu</i>
+          <a href="#" class="link icon-only">
+            <i class="icon f7-icons icon-main if-not-md">readings</i>
+            <i class="icon material-icons icon-main if-md">readings</i>
           </a>
         </div>
-        <div class="title sliding">Fall Readings App</div>
+        <div class="center">
+          <div class="searchbar searchbar-inline searchbar-init" data-search-container=".search-here">
+            <div class="searchbar-input-wrap">
+              <input type="search" placeholder="Search" />
+              <i class="searchbar-icon"></i>
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </div>
         <div class="right">
           <a href="#" class="link icon-only panel-open" data-panel="right">
             <i class="icon f7-icons if-not-md">menu</i>
             <i class="icon material-icons if-md">menu</i>
           </a>
         </div>
-        <div class="title-large">
-          <div class="title-large-text">Fall Readings App</div>
-        </div>
       </div>
     </div>
-    <!-- Toolbar-->
-    <div class="toolbar toolbar-bottom">
+    <div class="toolbar tabbar-labels toolbar-bottom">
       <div class="toolbar-inner">
-        <a href="#" class="link">Left Link</a>
-        <a href="#" class="link">Right Link</a>
+        <a href="#tab-2" class="tab-link">
+          <i class="icon f7-icons md-only">book_fill</i>
+          <i class="icon material-icons if-not-md">library_books</i>
+          <span class="tabbar-label">Books</span>
+        </a>
+        <a href="#tab-3" class="tab-link">
+          <i class="icon f7-icons md-only">play_rectangle_fill</i>
+          <i class="icon material-icons if-not-md">video_library</i>
+          <span class="tabbar-label">Videos</span>
+        </a>
+        <a href="#tab-1" class="tab-link justify-content-around tab-link-active">
+          <i class="icon f7-icons md-only ic-size-5">plus_circle</i>
+          <i class="icon material-icons if-not-md ic-size-5">add_circle</i>
+        </a>
+        <a href="#tab-4" class="tab-link">
+          <i class="icon f7-icons md-only">photo_fill_on_rectangle_fill</i>
+          <i class="icon material-icons if-not-md">collections</i>
+          <span class="tabbar-label">Photos</span>
+        </a>
+        <a href="#tab-5" class="tab-link">
+          <i class="icon f7-icons md-only">music_albums_fill</i>
+          <i class="icon material-icons if-not-md">music_note</i>
+          <span class="tabbar-label">Music</span>
+        </a>
       </div>
     </div>
     <!-- Scrollable page content-->
-    <div class="page-content">
-      <div class="block block-strong">
-        <p>Here is your blank Framework7 app. Let's see what we have here.</p>
+    <div class="page-content hide-toolbar-on-scroll">
+      <div class="searchbar-backdrop"></div>
+      <div class="list simple-list search-list searchbar-found">
       </div>
-      <div class="block-title">Navigation</div>
-      <div class="list">
+      <div class="block searchbar-not-found">
+        <div class="block-inner">Nothing found</div>
+      </div>
+      <!--<div class="list">
         <ul>
           <li>
             <a href="/about/" class="item-content item-link">
@@ -90,12 +118,33 @@
             <a href="/request-and-load/user/123456/">Request Data & Load</a>
           </li>
         </ul>
-      </div>
+      </div>-->
     </div>
   </div>
 </template>
 <script>
-export default () => {
-  return $render;
-}
+  export default (props, { $f7, $on }) => {
+    $on('pageInit', (e, page) => {
+      var searchbar = $f7.searchbar.create({
+        el: '.searchbar',
+        searchContainer: '.list',
+        searchIn: '.item-title',
+        backdrop: true,
+        backdropEl: '.searchbar-backdrop',
+        on: {
+          search(sb, query, previousQuery) {
+            console.log(query, previousQuery)
+          },
+          enable(sb) {
+            sb.searchContainer.style.visibility = "visible"
+          },
+          disable(sb) {
+            sb.searchContainer.style.visibility = "hidden"
+          },
+        }
+      })
+    })
+
+    return $render;
+  }
 </script>
