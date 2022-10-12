@@ -67,6 +67,9 @@
   </div>
 </template>
 <script>
+  import store from "@/js/store.js"
+  console.log("🚀 ~ file: home.f7 ~ line 71 ~ store.state", store.state)
+  console.log(import.meta.env) 
   export default (props, { $f7, $on }) => {
     $on('pageInit', (e, page) => {
       var searchbar = $f7.searchbar.create({
@@ -77,6 +80,7 @@
         backdropEl: '.searchbar-backdrop',
         on: {
           search(sb, query, previousQuery) {
+
             console.log(query, previousQuery)
           },
           enable(sb) {
