@@ -29,7 +29,6 @@ export default {
   root: SRC_DIR,
   base: '',
   publicDir: PUBLIC_DIR,
-  envDir: '',
   build: {
     outDir: BUILD_DIR,
     assetsInlineLimit: 0,

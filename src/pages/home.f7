@@ -51,13 +51,36 @@
         <a href="#tab-5" class="tab-link">
           <i class="icon f7-icons md-only">music_albums_fill</i>
           <i class="icon material-icons if-not-md">music_note</i>
-          <span class="tabbar-label">Music</span>
+          <span class="tabbar-label">Audio</span>
         </a>
       </div>
     </div>
     <!-- Scrollable page content-->
     <div class="page-content hide-toolbar-on-scroll">
       <div class="searchbar-backdrop"></div>
+      ${(videos.value.length > 0) &&
+        $h`
+        <div class="list">
+          <ul>
+            ${videos.value.map((video) => $h`
+            <li class="item-content">
+              <div class="item-media">
+                <img src="${url.value}/assets/${video.content[0].media_id.thumbnail}?fit=cover&width=50&height=50&quality=80" 
+                  alt="${video.title.toLowerCase().replaceAll(' ', '_')}_thumbnail"/>
+              </div>
+              <div class="item-inner">
+                <div class="item-title-column">
+                  <div class="item-title">${video.title}</div>
+                  <div class="item-after">${video.author}</div>
+                </div>
+              </div>
+              <div class="item-inner">
+              </div>
+            </li>
+            `)}
+          </ul>
+        </div>`
+      }
       <div class="list simple-list search-list searchbar-found">
       </div>
       <div class="block searchbar-not-found">
@@ -67,11 +90,11 @@
   </div>
 </template>
 <script>
-  import store from "@/js/store.js"
-  console.log("🚀 ~ file: home.f7 ~ line 71 ~ store.state", store.state)
-  console.log(import.meta.env) 
-  export default (props, { $f7, $on }) => {
+  export default (props, { $f7, $store, $on }) => {
+    const videos = $store.getters.videos
+    const url = $store.getters.api
     $on('pageInit', (e, page) => {
+      $store.dispatch('getVideos')
       var searchbar = $f7.searchbar.create({
         el: '.searchbar',
         searchContainer: '.list',
@@ -80,7 +103,6 @@
         backdropEl: '.searchbar-backdrop',
         on: {
           search(sb, query, previousQuery) {
-
             console.log(query, previousQuery)
           },
           enable(sb) {
@@ -92,7 +114,7 @@
         }
       })
     })
-
+    console.log($store.getters.videos)
     return $render;
   }
 </script>

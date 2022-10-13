@@ -2,31 +2,39 @@
 import { createStore } from 'framework7'
 import axios from 'axios'
 
-const searchOn = ({
-  youtube: async(q = "test") => {
-    var test = await axios.get(`https://weather.pga.tngl.dev/items/Weather_Station`, {
-    }).catch(e => {
-      console.log(e)
-    })
-    console.log("🚀 ~ file: store.js ~ line 15 ~ youtube:async ~ test", test)
-    return new Array(10).fill(null).map((_, i) => i + 1)
-  }
+const apiURL = `https://xqyt3v7h.directus.app`
+const directus = ({
+  readMany: async(params = {}) => await axios.get(`${apiURL}/items/media`, {
+      params: {
+        fields: "*.*.*",
+        limit: -1,
+        ...params,
+      },
+    }).then(({data: { data }}) => data)
+      .catch(e => { console.log(e) })
 })
-
 
 const store = createStore({
   state: {
-    videos: searchOn.youtube(),
-  },
-  getters: {
-    products({ state }) {
-      return state.products;
-    }
+    api: apiURL,
+    videos: [],
   },
   actions: {
-    addProduct({ state }, product) {
-      state.products = [...state.products, product];
+    getVideos: ({ state }) => {
+      directus.readMany({ filter: { category: { _eq: "videos" }}})
+        .then((videos) => {
+          console.log("🚀 ~ file: store.js ~ line 25 ~ .then ~ videos", videos)
+          state.videos = videos
+        })
+    },
+  },
+  getters: {
+    videos: ({ state }) => {
+      return state.videos
+    },
+    api: ({ state }) => {
+      return state.api
     },
   },
 })
-export default store;
+export default store
