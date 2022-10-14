@@ -1,0 +1,21 @@
+<template>
+<li class="item-content vstack pad-0">
+    <div class="item-media pad-y-0">
+        <img src="${url.value}/assets/${video.content[0].media_id.thumbnail}?fit=cover&width=500" class="lazy lazy-fade-in image-fluid" />
+    </div>
+    <div class="item-inner hstack align-items-start pad-x-2 pad-y-3">
+        <div class="vstack gap-2">
+            <div class="item-title mag-e-auto mag-s-0">${video.title}</div>
+            <div class="item-after pad-0 mag-e-auto mag-s-0">${video.author}</div>
+        </div>
+    </div>
+    </li>
+</template>
+<script>
+    export default (props, { $f7, $on }) => {
+        const video = props.data
+        const url = props.url
+        return $render
+    }
+
+</script>

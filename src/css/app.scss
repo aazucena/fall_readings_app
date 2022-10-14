@@ -111,7 +111,7 @@
   font-size: 3rem !important;
 }
 
-$paddings: (
+$spaces: (
   "": 0rem, 
   "-0": 0rem, 
   "-1": 0.25rem, 
@@ -123,31 +123,132 @@ $paddings: (
   "-7": 2.5rem, 
   "-8": 3rem, 
   "-9": 4.5rem, 
-  "-10": 5rem, 
+  "-10": 5rem,
+  "-auto": auto,
 );
 
-@each $key, $padding in $paddings {
+@each $key, $space in $spaces {
   .pad#{$key} {
-    padding: $padding !important;
+    padding: $space !important;
   }
   .pad-x#{$key} {
-    padding-left: $padding !important;
-    padding-right: $padding !important;
+    padding-left: $space !important;
+    padding-right: $space !important;
   }
   .pad-y#{$key} {
-    padding-top: $padding !important;
-    padding-bottom: $padding !important;
+    padding-top: $space !important;
+    padding-bottom: $space !important;
   }
   .pad-t#{$key} {
-    padding-top: $padding !important;
+    padding-top: $space !important;
   }
   .pad-b#{$key} {
-    padding-bottom: $padding !important;
+    padding-bottom: $space !important;
   }
   .pad-s#{$key} {
-    padding-left: $padding !important;
+    padding-left: $space !important;
   }
   .pad-e#{$key} {
-    padding-right: $padding !important;
+    padding-right: $space !important;
+  }
+  .mag#{$key} {
+    margin: $space !important;
+  }
+  .mag-x#{$key} {
+    margin-left: $space !important;
+    margin-right: $space !important;
+  }
+  .mag-y#{$key} {
+    margin-top: $space !important;
+    margin-bottom: $space !important;
+  }
+  .mag-t#{$key} {
+    margin-top: $space !important;
+  }
+  .mag-b#{$key} {
+    margin-bottom: $space !important;
+  }
+  .mag-s#{$key} {
+    margin-left: $space !important;
+  }
+  .mag-e#{$key} {
+    margin-right: $space !important;
+  }
+}
+
+.vstack {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+}
+.hstack {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+}
+
+$a-items: (
+  "baseline": baseline,
+  "center": center,
+  "end": flex-end,
+  "start": flex-start,
+  "normal": normal,
+  "stretch": stretch,
+);
+
+@each $key, $a-item in $a-items {
+  .align-items-#{$key} {
+    align-items: $a-item !important;
+  }
+}
+
+
+$a-self: (
+  "baseline": baseline,
+  "center": center,
+  "end": flex-end,
+  "start": flex-start,
+  "auto": auto,
+  "stretch": stretch,
+);
+
+@each $key, $self in $a-self {
+  .align-items-#{$key} {
+    align-self: $self !important;
+  }
+}
+
+$justify-contents: (
+  "evenly": space-evenly,
+  "center": center,
+  "end": flex-end,
+  "start": flex-start,
+  "between": space-between,
+  "around": space-around,
+  "stretch": stretch,
+);
+@each $key, $justify-content in $justify-contents {
+  .justify-content-#{$key} {
+    justify-content: $justify-content !important;
+  }
+}
+
+
+$gaps: (
+  "1": 0.25rem,
+  "2": 0.5rem,
+  "3": 1rem,
+  "4": 1.5rem,
+  "5": 1.75rem,
+  "6": 2rem,
+  "7": 2.5rem,
+  "8": 3rem,
+  "9": 4.5rem,
+  "10": 5rem,
+);
+
+@each $key, $gap in $gaps {
+  .gap-#{$key} {
+    gap: $gap !important;
   }
 }

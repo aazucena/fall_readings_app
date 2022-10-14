@@ -27,6 +27,7 @@
         </div>
       </div>
     </div>
+    <!-- Bottom Tab Bar -->
     <div class="toolbar tabbar-labels toolbar-bottom">
       <div class="toolbar-inner">
         <a href="#tab-2" class="tab-link">
@@ -39,7 +40,7 @@
           <i class="icon material-icons if-not-md">video_library</i>
           <span class="tabbar-label">Videos</span>
         </a>
-        <a href="#tab-1" class="tab-link justify-content-around tab-link-active">
+        <a href="#tab-1" class="tab-link justify-content-around">
           <i class="icon f7-icons md-only ic-size-5">plus_circle</i>
           <i class="icon material-icons if-not-md ic-size-5">add_circle</i>
         </a>
@@ -55,28 +56,16 @@
         </a>
       </div>
     </div>
-    <!-- Scrollable page content-->
     <div class="page-content hide-toolbar-on-scroll">
       <div class="searchbar-backdrop"></div>
       ${(videos.value.length > 0) &&
         $h`
-        <div class="list">
+        <div class="list mag-y-0">
           <ul>
             ${videos.value.map((video) => $h`
-            <li class="item-content">
-              <div class="item-media">
-                <img src="${url.value}/assets/${video.content[0].media_id.thumbnail}?fit=cover&width=50&height=50&quality=80" 
-                  alt="${video.title.toLowerCase().replaceAll(' ', '_')}_thumbnail"/>
-              </div>
-              <div class="item-inner">
-                <div class="item-title-column">
-                  <div class="item-title">${video.title}</div>
-                  <div class="item-after">${video.author}</div>
-                </div>
-              </div>
-              <div class="item-inner">
-              </div>
-            </li>
+              <>
+                <${VideoListView} data="${video}" url="${url}">
+              </>
             `)}
           </ul>
         </div>`
@@ -87,9 +76,11 @@
         <div class="block-inner">Nothing found</div>
       </div>
     </div>
+
   </div>
 </template>
 <script>
+  import VideoListView from '@/components/list-view/videos.f7'
   export default (props, { $f7, $store, $on }) => {
     const videos = $store.getters.videos
     const url = $store.getters.api
@@ -97,7 +88,7 @@
       $store.dispatch('getVideos')
       var searchbar = $f7.searchbar.create({
         el: '.searchbar',
-        searchContainer: '.list',
+        searchContainer: '.search-list',
         searchIn: '.item-title',
         backdrop: true,
         backdropEl: '.searchbar-backdrop',
