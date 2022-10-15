@@ -1,21 +1,35 @@
 <template>
-<li class="item-content vstack pad-0">
-    <div class="item-media pad-y-0">
-        <img src="${url.value}/assets/${video.content[0].media_id.thumbnail}?fit=cover&width=500" class="lazy lazy-fade-in image-fluid" />
-    </div>
-    <div class="item-inner hstack align-items-start pad-x-2 pad-y-3">
-        <div class="vstack gap-2">
-            <div class="item-title mag-e-auto mag-s-0">${video.title}</div>
-            <div class="item-after pad-0 mag-e-auto mag-s-0">${video.author}</div>
+    <li class="item-content vstack pad-0">
+        <div class="item-media pad-y-0">
+            <img src="${url.value}/assets/${video.content[0].media_id.thumbnail}?fit=inside" class="lazy lazy-fade-in image-fluid" />
         </div>
-    </div>
+        <div class="item-inner hstack align-items-start mag-s-0 pad-3">
+            <div class="hstack gap-4 align-items-center">
+                <div>
+                    <img src="${url.value}/assets/${video.content[0].item.avatar}?fit=outside&width=50&height=50" class="lazy lazy-fade-in image-fluid circle" />
+                </div>
+
+                <div class="vstack gap-1">
+                    <div class="mag-e-auto mag-s-0 fs-6 fw-medium">${video.title}</div>
+                    <div class="vstack">
+                        <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">${video.author}</div>
+                        <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">${numberFormat.format(video.content[0].item.views)} • ${moment(video.date_uploaded).fromNow()}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
 </template>
 <script>
-    export default (props, { $f7, $on }) => {
+    import Big from 'big.js'
+    import moment from "moment"   
+    const numberFormat = new Intl.NumberFormat("en-US", {
+        notation: "compact",
+        compactDisplay: "short",
+    })
+    export default (props, { $f7, $on, $ }) => {
         const video = props.data
         const url = props.url
         return $render
     }
-
 </script>
