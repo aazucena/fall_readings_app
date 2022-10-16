@@ -1,8 +1,112 @@
 <template>
-    <div>Audio Details</div>
+    <div class="page" data-name="video-details">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+                <div class="navbar-inner sliding">
+                    <div class="left">
+                        <a href="#" class="link back">
+                            <i class="icon icon-back"></i>
+                            <span class="if-not-md">Back</span>
+                        </a>
+                    </div>
+                <div class="title">${lodash.startCase(item.category)} Details</div>
+                <div class="right">
+                    <a href="#" class="link icon-only panel-open" data-panel="right">
+                    <i class="icon f7-icons if-not-md">ellipsis_vertical</i>
+                    <i class="icon material-icons if-md">more_vert</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="page-content pad-b-4">
+            <div class="pad-y-2">
+                <a href="${meta.url}" class="link external no-ripple">
+                    <div class="width-100 hstack justify-content-end pst-absolute level-50 align-items-end">
+                        <div class="mag-3 text-color-white fs-5">
+                            ${duration}
+                        </div>
+                    </div>
+                    <img src="${url.value}/assets/${meta.thumbnail}?fit=inside" class="lazy lazy-fade-in image-fluid" />
+                </a>
+            </div>
+            <div class="block pad-x-4 hstack justify-content-between mag-y-0">
+                <div class="vstack gap-1 justify-content-start">
+                    <div class="hstack justify-content-start">
+                        <div class="fs-7 fw-medium">${meta.title}</div>
+                    </div>
+                    <!-- <div class="hstack justify-content-start pad-s-1">
+                        <div class="fs-4 fw-light">${numberFormat.format(content.views)} • ${moment(meta.date_uploaded).fromNow()}</div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="pad-x-4">
+                <div class="block-title fs-4">Profile</div>
+                <div class="block pad-4 fs-5 vstack justify-content-start mag-y-0 fw-light box">
+                    <div class="hstack gap-6 justify-content-start">
+                        <${Avatar} src="${url.value}/assets/${meta.avatar}?fit=outside&width=50&height=50" />
+                        <div class="vstack justify-content-start">
+                            <div class="hstack justify-content-start">
+                                <div class="fs-6 fw-normal">${meta.author}</div>
+                            </div>
+                            <div class="hstack justify-content-start">
+                                <div class="fs-5 fst-italic fw-light text-muted-color">${lodash.startCase(content.type)}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pad-x-4">
+                <div class="block-title fs-4">Description</div>
+                <div class="block pad-4 fs-5 vstack gap-1 mag-y-0 fw-light box">
+                    ${meta.description ?? 'N/A'}
+                </div>
+            </div>
+            <div class="pad-x-4">
+                <div class="block-title fs-4">Tags</div>
+                <div class="block pad-4 hstack gap-2 flex-wrap mag-y-0 fw-light box">
+                    ${content.genre.length > 0 ? content.genre.map((cat => $h`
+                        <div class="chip">
+                            <div class="chip-label fs-5">${cat}</div>
+                        </div>
+                    `)): 'No tags...'}
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
+<style>
+    .dark .box {
+        background-color: rgba(255, 255, 255, 4%);
+        border-radius: 0.25rem !important;
+    }
+    .box {
+        background-color: rgba(0, 0, 0, 4%);
+        border-radius: 0.25rem !important;
+    }
+    .link.active-state img {
+        filter: brightness(75%) !important;
+    }
+</style>
 <script>
+    import lodash from "lodash"
+    import moment from "moment"
+    import Avatar from "@/components/avatar.f7"
+
+    const numberFormat = new Intl.NumberFormat("en-US", {
+        notation: "compact",
+        compactDisplay: "short",
+    })
     export default (props, { $f7, $store, $on }) => {
+        var dataset = $store.getters.audios
+        var item = dataset.value.find(({id}) => id == props.id)
+        const url = $store.getters.api
+        const meta = item.content[0].media_id
+        const content = item.content[0].item
+        const [hour, minute, second] = content.duration.split(':')
+        const duration = hour > 0 ? 
+            moment().hours(hour).minutes(minute).seconds(second).format('h:mm:ss') : 
+            moment().hours(hour).minutes(minute).seconds(second).format('mm:ss')
+        const embeddedURL = meta.url.replaceAll('/watch?v=', '/embed/')
         return $render
     }
 </script>

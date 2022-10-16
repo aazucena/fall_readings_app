@@ -1,6 +1,6 @@
 <template>
     <li>
-        <a href="#" class="item-link vstack pad-0">
+        <a href="/photos/details/${meta.id}" class="item-link vstack pad-0">
             <div class="img-container">
                 <div class="item-media pad-y-0">
                     <img src="${url.value}/assets/${meta.thumbnail}?fit=inside" class="lazy lazy-fade-in image-fluid object-fit-cover" />
