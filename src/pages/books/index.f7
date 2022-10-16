@@ -1,0 +1,11 @@
+<template>
+    <div>
+        <div class="searchbar-backdrop"></div>
+        <span>Books</span>
+    </div>
+</template>
+<script>
+    export default (props, { $f7, $store, $on }) => {
+        return $render
+    }
+</script>

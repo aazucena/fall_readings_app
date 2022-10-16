@@ -302,3 +302,24 @@ $font-weights: (
 .onhold{
     box-shadow: inset 0px 0px 0 5000px rgba(255,255,255,0.25);
 }
+
+@for $i from 0 through 100 {
+  .width-#{i} {
+    width: $i + 0% !important;
+  }
+  .height-#{i}{
+    height: $i + 0% !important;
+  }
+  .max-width-#{i} {
+    max-width: $i + 0% !important;
+  }
+  .max-height-#{i}{
+    max-height: $i + 0% !important;
+  }
+  .min-width-#{i} {
+    min-width: $i + 0% !important;
+  }
+  .min-height-#{i}{
+    min-height: $i + 0% !important;
+  }
+}

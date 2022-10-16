@@ -1,0 +1,8 @@
+<template>
+    <div>Books Details</div>
+</template>
+<script>
+    export default (props, { $f7, $store, $on }) => {
+        return $render
+    }
+</script>
