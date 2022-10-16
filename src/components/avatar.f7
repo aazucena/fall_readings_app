@@ -1,6 +1,6 @@
 <template>
     <div class="avatar">
-        <img src="${src}" width="50" height="50" class="lazy lazy-fade-in image-fluid circle" />
+        <img src="${src}" width="50" height="50" class="lazy lazy-fade-in image-fluid circle object-fit-cover" />
     </div>
 </template>
 <script>

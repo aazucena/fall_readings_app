@@ -1,8 +1,10 @@
 <template>
     <li>
         <a href="#" class="item-link vstack pad-0">
-            <div class="item-media pad-y-0">
-                <img src="${url.value}/assets/${meta.thumbnail}?fit=inside" class="lazy lazy-fade-in image-fluid" />
+            <div class="img-container">
+                <div class="item-media pad-y-0">
+                    <img src="${url.value}/assets/${meta.thumbnail}?fit=inside" class="lazy lazy-fade-in image-fluid object-fit-cover" />
+                </div>
             </div>
             <div class="item-inner hstack align-items-start mag-s-0 pad-3">
                 <div class="hstack gap-4 align-items-center">
@@ -11,7 +13,9 @@
                         <div class="mag-e-auto mag-s-0 fs-6 fw-medium lh-normal">${meta.title}</div>
                         <div class="vstack">
                             <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">${meta.author}</div>
-                            <!-- <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">${content.type} • ${numberFormat.format(content.views)} • ${moment(meta.date_uploaded).fromNow()}</div> -->
+                            <!-- <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">
+                                    ${content.type} • ${numberFormat.format(content.views)} • ${moment(meta.date_uploaded).fromNow()}
+                                </div> -->
                         </div>
                     </div>
                 </div>
@@ -42,9 +46,6 @@
         const meta = props.data.content[0].media_id
         const content = props.data.content[0].item
         const url = props.url
-        $('.item-content').click((e) => {
-            console.log(e)
-        })
         return $render
     }
 </script>

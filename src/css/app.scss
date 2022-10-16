@@ -4,7 +4,6 @@
 .device-cordova.device-ios {
   height: 100vh;
 }
-/* Your app custom styles here */
 /*Link: https://framework7.io/docs/css-variables */
 :root {
     --f7-font-family: 'Ubuntu', sans-serif;
@@ -66,7 +65,7 @@
   --f7-theme-color-tint: #6bccf9;
 }
 
-/* custom */
+/* custom css styles*/
 .icon-main {
   overflow: visible !important;
   filter: var(--f7-theme-color-filter) !important;
@@ -318,8 +317,37 @@ $font-weights: (
   .min-height-#{i}{
     min-height: $i + 0% !important;
   }
+  .level-#{i} {
+    z-index: 10 * $i !important;
+  }
+}
+
+.text-muted-color {
+  color: rgba(0, 0, 0, 0.50) !important;
+}
+
+.dark .text-muted-color {
+  color: rgba(255, 255, 255, 0.50) !important;
+}
+
+.fst-italic {
+  font-style: italic !important;
 }
 
 .lh-normal {
   line-height: normal !important;
 }
+
+.pst-absolute {
+  position: absolute !important;
+}
+
+.img-container {
+  overflow: hidden !important;
+  min-width: 100% !important;
+  height: 221.06px !important;
+}
+
+img.object-fit-cover {
+  object-fit: cover !important;
+} 
