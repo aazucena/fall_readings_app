@@ -22,7 +22,7 @@
             <div class="pad-y-2">
                 <a href="${meta.url}" class="link external no-ripple">
                     <div class="width-100 hstack justify-content-end pst-absolute level-50 align-items-end">
-                        <div class="mag-3 text-color-white fs-5">
+                        <div class="mag-3 text-color-white fs-5 bg-color-black pad-1 rounded">
                             ${duration}
                         </div>
                     </div>
