@@ -1,14 +1,16 @@
 <template>
-    <div>
-        <div class="searchbar-backdrop"></div>
-        <${VideoMenu} />
-        <div class="block searchbar-not-found">
-            <div class="block-inner">Nothing found</div>
-        </div>
+    <div class="vstack gap-4">
+        <${VideoMenu} isAll=${true} />
+        <${AudioMenu} isAll=${true} />
+        <${PhotoMenu} isAll=${true} />
+        <${BookMenu} isAll=${true} />
     </div>
 </template>
 <script>
     import VideoMenu from '@/components/menu/videos.f7'
+    import AudioMenu from '@/components/menu/audio.f7'
+    import PhotoMenu from '@/components/menu/photos.f7'
+    import BookMenu from '@/components/menu/books.f7'
     export default (props, { $f7, $store, $on }) => {
         return $render
     }

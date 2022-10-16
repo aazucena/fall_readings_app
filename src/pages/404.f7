@@ -21,7 +21,9 @@
 </div>
 </template>
 <script>
-export default () => {
-  return $render;
+export default (props, dom) => {
+  console.log("🚀 ~ file: 404.f7 ~ line 25 ~ dom", dom)
+  console.log("🚀 ~ file: 404.f7 ~ line 25 ~ props", props)
+  return $render
 };
 </script>

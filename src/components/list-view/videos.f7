@@ -1,19 +1,17 @@
 <template>
     <li>
-        <a href="#" class="item-link vstack pad-0">
+        <a href="/videos/details/${meta.id}" class="item-link vstack pad-0">
             <div class="item-media pad-y-0">
-                <img src="${url.value}/assets/${video.content[0].media_id.thumbnail}?fit=inside" class="lazy lazy-fade-in image-fluid" />
+                <img src="${url.value}/assets/${meta.thumbnail}?fit=inside" class="lazy lazy-fade-in image-fluid" />
             </div>
             <div class="item-inner hstack align-items-start mag-s-0 pad-3">
                 <div class="hstack gap-4 align-items-center">
-                    <div class="avatar">
-                        <img src="${url.value}/assets/${video.content[0].item.avatar}?fit=outside&width=50&height=50" class="lazy lazy-fade-in image-fluid circle" />
-                    </div>
+                    <${Avatar} src="${url.value}/assets/${meta.avatar}?fit=outside&width=50&height=50" />
                     <div class="vstack gap-1">
-                        <div class="mag-e-auto mag-s-0 fs-6 fw-medium">${video.title}</div>
+                        <div class="mag-e-auto mag-s-0 fs-6 fw-medium lh-normal">${meta.title}</div>
                         <div class="vstack">
-                            <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">${video.author}</div>
-                            <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">${numberFormat.format(video.content[0].item.views)} • ${moment(video.date_uploaded).fromNow()}</div>
+                            <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">${meta.author}</div>
+                            <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">${content.type} • ${numberFormat.format(content.views)} • ${moment(meta.date_uploaded).fromNow()}</div>
                         </div>
                     </div>
                 </div>
@@ -34,13 +32,15 @@
 </style>
 <script>
     import Big from 'big.js'
-    import moment from "moment"   
+    import moment from "moment"
+    import Avatar from "@/components/avatar.f7"
     const numberFormat = new Intl.NumberFormat("en-US", {
         notation: "compact",
         compactDisplay: "short",
     })
     export default (props, { $f7, $on, $ }) => {
-        const video = props.data
+        const meta = props.data.content[0].media_id
+        const content = props.data.content[0].item
         const url = props.url
         $('.item-content').click((e) => {
             console.log(e)

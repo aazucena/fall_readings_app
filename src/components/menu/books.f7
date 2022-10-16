@@ -1,0 +1,35 @@
+<template>
+    <div>
+        <div class="block-title lh-normal">${isAll === true ? "Recommended Books" : "Recommended"}</div>
+        ${(!!books && books.value.length > 0) ? 
+            $h`
+            <div class="list mag-y-0">
+                <ul>
+                    ${books.value.slice(0, 6).map((photo) => $h`
+                    <>
+                        <${ListView} data="${photo}" url="${url}">
+                    </>
+                    `)}
+                </ul>
+            </div>` 
+            : $h`
+                <ul class="mag-0 pad-0">
+                    ${new Array(6).fill(null).map((_, index) => $h`<${Skeleton} />`)}
+                </ul>
+            `
+        }
+    </div>
+</template>
+<script>
+import ListView from '@/components/list-view/books.f7'
+import Skeleton from '@/components/list-view-skeleton/books.f7'
+export default (props, { $f7, $store, $on }) => {
+    const isAll = props?.isall ?? false
+    const books = $store.getters.books
+    const url = $store.getters.api
+    $on('pageInit', (e, page) => {
+        $store.dispatch('getBooks')
+    })
+    return $render
+}
+</script>

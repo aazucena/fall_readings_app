@@ -1,0 +1,28 @@
+<template>
+    <li>
+        <a href="#" class="item-link vstack pad-0 skeleton-text width-100 skeleton-effect-wave">
+            <div class="item-media pad-y-0">
+                <div class="skeleton-block min-width-100 min-height-100 pad-10"></div>
+            </div>
+            <div class="item-inner hstack align-items-start mag-s-0 width-100">
+                <div class="hstack gap-4 align-items-center pad-3">
+                    <div class="avatar">
+                        <div class="skeleton-block" style="width: 50px; height: 50px; border-radius: 50%"></div>
+                    </div>
+                    <div class="vstack gap-1">
+                        <div class="mag-e-auto mag-s-0 fs-6 fw-medium">______________</div>
+                        <div class="vstack">
+                            <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">________________</div>
+                            <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">_________________________________</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+</template>
+<style>
+    li {
+        list-style-type: none;
+    }
+</style>

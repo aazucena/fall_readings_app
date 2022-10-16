@@ -1,0 +1,35 @@
+<template>
+    <div>
+        <div class="block-title lh-normal">${isAll === true ? "Recommended Audio" : "Recommended"}</div>
+        ${(!!audios && audios.value.length > 0) ? 
+            $h`
+            <div class="list mag-y-0">
+                <ul>
+                    ${audios.value.slice(0, 6).map((audio) => $h`
+                    <>
+                        <${ListView} data="${audio}" url="${url}">
+                    </>
+                    `)}
+                </ul>
+            </div>` 
+            : $h`
+                <ul class="mag-0 pad-0">
+                    ${new Array(6).fill(null).map((_, index) => $h`<${Skeleton} />`)}
+                </ul>
+            `
+        }
+    </div>
+</template>
+<script>
+import ListView from '@/components/list-view/audio.f7'
+import Skeleton from '@/components/list-view-skeleton/audio.f7'
+export default (props, { $f7, $store, $on }) => {
+    const isAll = props?.isall ?? false
+    const audios = $store.getters.audios
+    const url = $store.getters.api
+    $on('pageInit', (e, page) => {
+        $store.dispatch('getAudio')
+    })
+    return $render
+}
+</script>

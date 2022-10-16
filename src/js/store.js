@@ -18,19 +18,60 @@ const store = createStore({
   state: {
     api: apiURL,
     videos: [],
+    audios: [],
+    books: [],
+    photos: [],
   },
   actions: {
     getVideos: ({ state }) => {
       directus.readMany({ filter: { category: { _eq: "videos" }}})
         .then((videos) => {
-          console.log("🚀 ~ file: store.js ~ line 25 ~ .then ~ videos", videos)
           state.videos = videos
+        })
+    },
+    getAudio: ({ state }) => {
+      directus.readMany({ filter: { category: { _eq: "audio" }}})
+        .then((audios) => {
+          state.audios = audios
+        })
+    },
+    getBooks: ({ state }) => {
+      directus.readMany({ filter: { category: { _eq: "books" }}})
+        .then((books) => {
+          state.books = books
+        })
+    },
+    getPhotos: ({ state }) => {
+      directus.readMany({ filter: { category: { _eq: "photos" }}})
+        .then((photos) => {
+          state.photos = photos
         })
     },
   },
   getters: {
     videos: ({ state }) => {
       return state.videos
+    },
+    audios: ({ state }) => {
+      return state.audios
+    },
+    books: ({ state }) => {
+      return state.books
+    },
+    photos: ({ state }) => {
+      return state.photos
+    },
+    video: ({ state }, { id }) => {
+      return state.videos.find((data) => data.id === id)
+    },
+    audio: ({ state }, { id }) => {
+      return state.audios.find((data) => data.id === id)
+    },
+    book: ({ state }, { id }) => {
+      return state.books.find((data) => data.id === id)
+    },
+    photo: ({ state }, { id }) => {
+      return state.photos.find((data) => data.id === id)
     },
     api: ({ state }) => {
       return state.api

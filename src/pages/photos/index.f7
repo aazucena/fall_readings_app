@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="searchbar-backdrop"></div>
-        <span>Photos</span>
+        <${Menu} />
     </div>
 </template>
 <script>
+    import Menu from '@/components/menu/photos.f7'
     export default (props, { $f7, $store, $on }) => {
         return $render
     }

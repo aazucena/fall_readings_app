@@ -43,13 +43,29 @@ const tabs = [
 ].map(({name, components}) => ({
   path: `/${name}/`,
   id: `${name}-tab`,
-  component: components.index,
-  routes: [
-    {
-      path: 'details/:id',
-      component: components.details,
-    }
-  ]
+  component: components.index
+}))
+
+const detail_pages = [
+  {
+    name: 'videos', 
+    component: VideosDetailsPage
+  },
+  {
+    name: 'audio', 
+    component: AudioDetailsPage
+  },
+  {
+    name: 'photos', 
+    component: PhotosDetailsPage
+  },
+  {
+    name: 'books', 
+    component: BooksDetailsPage
+  }
+].map(({name, component}) => ({
+  path: `/${name}/details/:id`,
+  component: component,
 }))
 
 console.log("🚀 ~ file: routes.js ~ line 43 ~ tabs", tabs)
@@ -66,7 +82,7 @@ var routes = [
       ...tabs
     ],
   },
-
+  ...detail_pages,
 
   // {
   //   path: '/dynamic-route/blog/:blogId/post/:postId/',

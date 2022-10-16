@@ -1,0 +1,11 @@
+<template>
+    <div class="avatar">
+        <img src="${src}" width="50" height="50" class="lazy lazy-fade-in image-fluid circle" />
+    </div>
+</template>
+<script>
+export default (props) => {
+    const src = props.src
+    return $render
+}
+</script>

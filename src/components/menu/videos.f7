@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="block-title">Recommended Videos</div>
+        <div class="block-title lh-normal">${isAll === true ? "Recommended Videos" : "Recommended"}</div>
         ${(!!videos && videos.value.length > 0) ? 
             $h`
             <div class="list mag-y-0">
@@ -24,6 +24,7 @@
 import VideoListView from '@/components/list-view/videos.f7'
 import VideoSkeleton from '@/components/list-view-skeleton/videos.f7'
 export default (props, { $f7, $store, $on }) => {
+    const isAll = props?.isall ?? false
     const videos = $store.getters.videos
     const url = $store.getters.api
     $on('pageInit', (e, page) => {
