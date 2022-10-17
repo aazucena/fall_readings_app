@@ -6,7 +6,7 @@ Framework7 app created with following options:
 
 ```
 {
-  "cwd": "C:\\Users\\Amelia\\Documents\\University\\8 - Fall 2022\\NMED 3630\\Exercises\\Exercise 3\\fall_reading_app",
+  "cwd": "C:\\Users\\Amelia\\Documents\\University\\8 - Fall 2022\\NMED 3630\\Exercises\\Exercise 3\\fall_readings_app",
   "type": [
     "cordova"
   ],
@@ -16,8 +16,8 @@ Framework7 app created with following options:
   "bundler": "vite",
   "cssPreProcessor": "scss",
   "theming": {
-    "customColor": false,
-    "color": "#007aff",
+    "customColor": true,
+    "color": "#E68D61",
     "darkTheme": false,
     "iconFonts": true,
     "fillBars": false
