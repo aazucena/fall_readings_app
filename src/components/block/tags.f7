@@ -1,8 +1,30 @@
 <template>
-
+    <div class="pad-x-4">
+        <div class="block-title fs-4">${title}</div>
+        <div class="block pad-4 hstack gap-2 flex-wrap mag-y-0 fw-light box">
+            ${tags.length > 0 ? tags.map((tag => $h`
+                <div class="chip button button-raised mag-x-2">
+                    <div class="chip-label fs-5">${lodash.startCase(tag)}</div>
+                </div>
+            `)): 'No tags...'}
+        </div>
+    </div>
 </template>
+<style>
+    .dark .box {
+        background-color: rgba(255, 255, 255, 4%);
+        border-radius: 0.25rem !important;
+    }
+    .box {
+        background-color: rgba(0, 0, 0, 4%);
+        border-radius: 0.25rem !important;
+    }
+</style>
 <script>
+    import lodash from "lodash"
     export default (props, { $f7, $store, $on }) => {
+        const tags = props.tags
+        const title = props.title ?? 'Tags'
         return $render
     }
 </script>

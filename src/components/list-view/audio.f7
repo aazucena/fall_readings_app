@@ -15,14 +15,17 @@
             </div>
             <div class="item-inner hstack align-items-start mag-s-0 pad-3">
                 <div class="hstack gap-4 align-items-center">
-                    <${Avatar} src="${url.value}/assets/${meta.avatar}?fit=outside&width=50&height=50" />
+                    <${Avatar} src="${url.value}/assets/${meta.avatar}?fit=outside&width=500&height=500" />
                     <div class="vstack gap-1">
                         <div class="mag-e-auto mag-s-0 fs-6 fw-medium lh-normal">${meta.title}</div>
                         <div class="vstack">
                             <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">${meta.author}</div>
-                            <!-- <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">
-                                ${content.type} • ${numberFormat.format(content.views)} • ${moment(meta.date_uploaded).fromNow()}
-                            </div> -->
+                            <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">
+                                ${content.type == 'podcasts' ? 'Episode' : 'Track'} #${content.track_number} • ${content.collection_name}
+                            </div>
+                            <div class="item-after pad-0 mag-e-auto mag-s-0 fs-4">
+                                ${moment(meta.date_uploaded).fromNow()}
+                            </div>
                         </div>
                     </div>
                 </div>

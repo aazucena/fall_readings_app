@@ -1,8 +1,39 @@
 <template>
-
+    <div class="pad-x-4">
+        <div class="block-title fs-4">${title}</div>
+        <div class="block pad-4 fs-5 vstack justify-content-start mag-y-0 fw-light box">
+            <div class="hstack gap-6 justify-content-start">
+                <${Avatar} src="${avatar_url}" />
+                <div class="vstack justify-content-start">
+                    <div class="hstack justify-content-start">
+                        <div class="fs-6 fw-normal">${author}</div>
+                    </div>
+                    <div class="hstack justify-content-start">
+                        <div class="fs-5 fst-italic fw-light text-muted-color">${lodash.startCase(type)}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
+<style>
+    .dark .box {
+        background-color: rgba(255, 255, 255, 4%);
+        border-radius: 0.25rem !important;
+    }
+    .box {
+        background-color: rgba(0, 0, 0, 4%);
+        border-radius: 0.25rem !important;
+    }
+</style>
 <script>
+    import lodash from "lodash"
+    import Avatar from "@/components/avatar.f7"
     export default (props, { $f7, $store, $on }) => {
+        const type = props.type
+        const title = props.title ?? 'Profile'
+        const author = props.author ?? 'Unknown'
+        const avatar_url = props.avatar_url
         return $render
     }
 </script>

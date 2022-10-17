@@ -348,8 +348,16 @@ $font-weights: (
   height: 221.06px !important;
 }
 
-img.object-fit-cover {
+.object-fit-cover {
   object-fit: cover !important;
+} 
+
+.object-fit-contain {
+  object-fit: contain !important;
+} 
+
+.object-fit-fill {
+  object-fit: fill !important;
 } 
 
 .rounded {

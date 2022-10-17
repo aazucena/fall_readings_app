@@ -1,8 +1,20 @@
 <template>
     <div class="avatar">
-        <img src="${src}" width="50" height="50" class="lazy lazy-fade-in image-fluid circle object-fit-cover" />
+        <img src="${src}" width="50px" height="50px" class="lazy lazy-fade-in circle object-fit-fill" />
     </div>
 </template>
+<style>
+    .avatar {
+        display: flex !important;
+        padding-right: 1rem !important;
+    }
+    .avatar img {
+        max-width: 50px !important;
+        height: 50px !important;
+        vertical-align: middle;
+        object-fit: fill !important;
+    }
+</style>
 <script>
 export default (props) => {
     const src = props.src

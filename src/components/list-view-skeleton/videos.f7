@@ -6,7 +6,7 @@
             </div>
             <div class="item-inner hstack align-items-start mag-s-0 width-100">
                 <div class="hstack gap-4 align-items-center pad-3">
-                    <div class="avatar">
+                    <div class="avatar mag-e-3">
                         <div class="skeleton-block" style="width: 50px; height: 50px; border-radius: 50%"></div>
                     </div>
                     <div class="vstack gap-1">

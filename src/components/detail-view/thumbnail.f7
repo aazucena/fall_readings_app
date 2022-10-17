@@ -1,0 +1,42 @@
+<template>
+    
+    <div class="hstack justify-content-center bg-color-black mag-y-2 mag-b-4">
+        <a href="${url}" class="link external no-ripple width-100">
+            ${!!duration == true && $h`
+                <div class="width-100 hstack justify-content-end pst-absolute level-50 align-items-end">
+                    <div class="mag-3 text-color-white fs-5 bg-color-black pad-1 rounded">
+                        ${duration}
+                    </div>
+                </div>
+            `}
+            <div class="hstack justify-content-center thumbnail">
+                <img src="${src}" class="lazy lazy-fade-in image-fluid" />
+            </div>
+        </a>
+    </div>
+</template>
+<style>
+    .thumbnail {
+        height: 221.06px !important;
+    }
+    .list .item-link .item-inner:before {
+        content: "";
+    }
+    .item-link.active-state > .item-media > img {
+        filter: brightness(75%) !important;
+    }
+    .item-link.active-state > .item-inner .avatar > img {
+        filter: brightness(87.5%) !important;
+    }
+    .link.active-state img {
+        filter: brightness(75%) !important;
+    }
+</style>
+<script>
+    export default (props, { $f7, $store, $on }) => {
+        const url = props.url ?? "#" 
+        const src = props.src ?? "#" 
+        const duration = props.duration
+        return $render
+    }
+</script>

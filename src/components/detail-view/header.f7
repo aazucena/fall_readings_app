@@ -1,0 +1,30 @@
+<template>
+    <div class="block pad-x-4 hstack justify-content-between mag-y-0">
+        <div class="vstack gap-1 justify-content-start">
+            <div class="hstack justify-content-between width-100 align-items-center">
+                <div class="hstack justify-content-start">
+                    <div class="fs-7 fw-medium">${title}</div>
+                </div>
+                <div class="hstack justify-content-end">
+                    <a href="${url}" class="circle link external button button-fill button-round button-raised pad-2">
+                        <i class="icon f7-icons if-not-md">link</i>
+                        <i class="icon material-icons if-md">link</i>
+                    </a>
+                </div>
+            </div>
+            <slot name="subtitle"></slot>
+        </div>
+    </div>
+</template>
+<style>
+    .circle i.icon.material-icons.if-md {
+        transform: rotate(315deg) !important;
+    }
+</style>
+<script>
+    export default (props, { $f7, $store, $on }) => {
+        const title = props.title 
+        const url = props.url ?? "#" 
+        return $render
+    }
+</script>

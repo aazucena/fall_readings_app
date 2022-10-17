@@ -1,8 +1,26 @@
 <template>
-
+    <div class="pad-x-4">
+        <div class="block-title fs-4">${title}</div>
+        <div class="block pad-4 fs-5 vstack gap-1 mag-y-0 fw-light box">
+            ${content}
+        </div>
+    </div>
 </template>
+<style>
+    .dark .box {
+        background-color: rgba(255, 255, 255, 4%);
+        border-radius: 0.25rem !important;
+    }
+    .box {
+        background-color: rgba(0, 0, 0, 4%);
+        border-radius: 0.25rem !important;
+    }
+</style>
 <script>
+    import lodash from "lodash"
     export default (props, { $f7, $store, $on }) => {
+        const content = props.content ?? 'N/A'
+        const title = props.title ?? 'Description'
         return $render
     }
 </script>
