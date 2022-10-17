@@ -3,7 +3,7 @@
         <div class="block-title fs-4">${title}</div>
         <div class="block pad-4 hstack gap-2 flex-wrap mag-y-0 fw-light box">
             ${tags.length > 0 ? tags.map((tag => $h`
-                <div class="chip button button-raised mag-x-2">
+                <div class="chip button button-raised mag-x-2 mag-y-1">
                     <div class="chip-label fs-5">${lodash.startCase(tag)}</div>
                 </div>
             `)): 'No tags...'}

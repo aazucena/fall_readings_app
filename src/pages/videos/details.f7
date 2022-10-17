@@ -24,7 +24,7 @@
                 duration=${duration}/>
             <${DetailsHeader} title="${meta.title}" url="${meta.url}">
                 <div slot="subtitle" class="hstack justify-content-start pad-s-1">
-                    <div class="fs-4 fw-light">${numberFormat.format(content.views)} • ${moment(meta.date_uploaded).fromNow()}</div>
+                    <div class="fs-4 fw-light">${millify(content.views)} • ${moment(meta.date_uploaded).fromNow()}</div>
                 </div>
             </${DetailsHeader}>
             <${ProfileBlock} title="Profile" type=${content.type} author=${meta.author} avatar_url="${url.value}/assets/${meta.avatar}?fit=outside&width=500&height=500" content=${meta.description}/>
@@ -37,16 +37,13 @@
 <script>
     import lodash from "lodash"
     import moment from "moment"
+    import millify from "millify"
     import DetailsThumbnail from "@/components/detail-view/thumbnail.f7"
     import DetailsHeader from "@/components/detail-view/header.f7"
     import ProfileBlock from "@/components/block/profile.f7"
     import TagBlock from "@/components/block/tags.f7"
     import TextBlock from "@/components/block/text.f7"
 
-    const numberFormat = new Intl.NumberFormat("en-US", {
-        notation: "compact",
-        compactDisplay: "short",
-    })
     export default (props, { $f7, $store, $on }) => {
         var dataset = $store.getters.videos
         var item = dataset.value.find(({id}) => id == props.id)

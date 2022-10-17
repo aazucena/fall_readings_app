@@ -5,7 +5,7 @@
             <div class="navbar-bg"></div>
             <div class="navbar-inner">
                 <div class="left">
-                    <a href="/" class="link icon-only">
+                    <a href="/" class="link icon-only width-100">
                     <i class="icon f7-icons icon-main if-not-md">readings</i>
                     <i class="icon material-icons icon-main if-md">readings</i>
                     </a>

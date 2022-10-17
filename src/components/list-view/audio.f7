@@ -9,7 +9,7 @@
                         </div>
                     </div>
                     <div class="hstack justify-content-center">
-                        <img src="${url.value}/assets/${meta.thumbnail}?fit=inside" class="thumbnail lazy lazy-fade-in image-fluid object-fit-cover" />
+                        <img src="${url.value}/assets/${meta.thumbnail}?fit=inside" class="thumbnail lazy lazy-fade-in image-fluid object-fit-contain" />
                     </div>
                 </div>
             </div>
@@ -51,10 +51,6 @@
     import Big from 'big.js'
     import moment from "moment"   
     import Avatar from "@/components/avatar.f7"
-    const numberFormat = new Intl.NumberFormat("en-US", {
-        notation: "compact",
-        compactDisplay: "short",
-    })
     export default (props, { $f7, $on, $ }) => {
         const meta = props.data.content[0].media_id
         const content = props.data.content[0].item

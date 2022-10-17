@@ -10,7 +10,7 @@
                 </div>
             `}
             <div class="hstack justify-content-center thumbnail">
-                <img src="${src}" class="lazy lazy-fade-in image-fluid" />
+                <img src="${src}" class="lazy lazy-fade-in image-fluid object-fit-contain" />
             </div>
         </a>
     </div>
