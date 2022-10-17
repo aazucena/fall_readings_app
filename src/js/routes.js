@@ -68,7 +68,6 @@ const detail_pages = [
   component: component,
 }))
 
-console.log("🚀 ~ file: routes.js ~ line 43 ~ tabs", tabs)
 var routes = [
   {
     path: '/',
