@@ -45,7 +45,6 @@ First of all we need to install dependencies, run in terminal
 ```
 npm install
 ```
-
 ## NPM Scripts
 
 * 🔥 `start` - run development server
@@ -56,6 +55,12 @@ npm install
 * 📱 `cordova-ios` - run dev build cordova iOS app
 * 📱 `build-cordova-android` - build cordova Android app
 * 📱 `cordova-android` - run dev build cordova Android app
+* 📱 `cordova-add-android` - add Android platform to cordova app
+
+
+## Instructions
+1. Add Android platform to cordova app
+2.  Run `npm run cordova-android`
 
 ## Vite
 
